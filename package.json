@@ -1,6 +1,7 @@
 {
   "name": "node-test-bootstrap",
-  "version": "1.0.3",
+  "description": "Bootstrapping Node test runner files",
+  "version": "1.0.4",
   "engines": { "node": ">=20.13.0" },
   "author": {
     "name": "hh lohmann",
