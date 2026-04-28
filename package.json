@@ -1,0 +1,11 @@
+{
+  "name": "node-test-bootstrap",
+  "version": "1.0.0",
+  "engines": { "node": ">=20.13.0" },
+  "author": {
+    "name": "hh lohmann",
+    "email": "hh.lohmann@gmail.com"
+  },
+  "type": "module",
+  "main": "index.js"
+}
