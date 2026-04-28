@@ -17,20 +17,20 @@ Node's "assert" is fully and its test runner is [partly implemented](#bun-node-c
 Depending on your preferred package manager:
 
 ```shell
-  npm i hh-lohmann/fetch-cors-valid
+  npm i hh-lohmann/node-test-bootstrap
 ```
 
 ```shell
-  pnpm i hh-lohmann/fetch-cors-valid
-```'should return "' + value[ 1 ] + '" for `' + value[ 0 ] + '`: ' + eval( value[ 0 ] )
+  pnpm i hh-lohmann/node-test-bootstrap
+```
 
 ```shell
-  yarn add hh-lohmann/fetch-cors-valid
+  yarn add hh-lohmann/node-test-bootstrap
 ```
 
 ```shell
   // see note on Bun in README
-  bun i hh-lohmann/fetch-cors-valid
+  bun i hh-lohmann/node-test-bootstrap
 ```
 
 
