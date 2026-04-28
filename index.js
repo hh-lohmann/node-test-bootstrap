@@ -1,11 +1,11 @@
 // @ts-check
 
 import package_data from './package.json' with { type: 'json' };
-import { release, version } from 'node:process' ;
-import assert from 'assert';
+import * as process from 'node:process' ;
+import assert from 'node:assert';
 
-if( ! [ 'node', 'bun' ].includes( release.name ) ) throw Error( 'Must run in Node.js or Bun' );
-if( release.sourceUrl && release.sourceUrl.includes( '/bun/') ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
+if( ! process.release || ! [ 'node', 'bun' ].includes( process.release.name ) ) throw Error( 'Must run in Node.js or Bun' );
+if( process.release.sourceUrl && process.release.sourceUrl.includes( '/bun/') ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
 
 /** Exit with error 
  * @example _exit_err( 'engines', 'not defined' )
@@ -44,7 +44,7 @@ const _to_ver_num_arr = function( ver_string ){
   return my_arr;
 }
 
-const _is = _to_ver_num_arr( version ) ;
+const _is = _to_ver_num_arr( process.version ) ;
 const _min = _to_ver_num_arr( package_data.engines.node ) ;
 let _approved = undefined ;
 if( ! _approved && _is[ 0 ] < _min[ 0 ] ) _exit_err( 'version' ) ;
