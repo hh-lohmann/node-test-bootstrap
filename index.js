@@ -1,11 +1,11 @@
 // @ts-check
 
 import package_data from './package.json' with { type: 'json' };
-import { title, version } from 'node:process' ;
+import { release, version } from 'node:process' ;
 import assert from 'assert';
 
-if( ! [ 'node', 'bun' ].includes( title ) ) throw Error( 'Must run in Node.js or Bun' );
-if( title === 'bun' ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
+if( ! [ 'node', 'bun' ].includes( release.name ) ) throw Error( 'Must run in Node.js or Bun' );
+if( release.sourceUrl && release.sourceUrl.includes( '/bun/') ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
 
 /** Exit with error 
  * @example _exit_err( 'engines', 'not defined' )
