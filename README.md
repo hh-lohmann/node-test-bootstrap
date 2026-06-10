@@ -1,15 +1,15 @@
-###### Node.js
+###### npm package
 
-# Node test bootstrap
+# Node testing bootstrap
 
-Node [has a test runner on board](#node-test-runner) whose capabilities depend on the Node version used, esp. "suite" / "describe" requiring at least Node 20.13, and "suite" and other functions have to be imported identically to every test file.
+Node [has a test runner on board](#node-test-runner) whose capabilities depend on the Node version used, esp. "mock.property" requiring at least Node 22.20, and "mock" and other objects have to be imported identically to every test file.
 
-The following tries to simplify the required (opionated) importing and checks the required Node version offering the respective functionality.
+The following acts as a tiny middleware to check the running Node version before importing the required Node functionality in single stroke.
 
 
 ## Bun
 
-Node's "assert" is fully and its test runner is [partly implemented](#bun-node-compatibility) in Bun, so the bootstrap here will also accept to be run in Bun, details may depend on exact tests.
+Bun implents Node's "assert" [fully](#bun-node-compatibility-assert) and its test runner library [partly](#bun-node-compatibility-test), so the bootstrap here will also accept to be run in Bun, details may depend on exact tests.
 
 
 ## Installation
@@ -38,7 +38,7 @@ Depending on your preferred package manager:
 
 * Bootstrapping
   ```js
-    import { assert, suite, test } from 'node-test-bootstrap';
+    import { assert, mock, suite, test } from 'node-test-bootstrap';
   ```
 
 * Your tests like
@@ -59,18 +59,20 @@ Depending on your preferred package manager:
 
 ### Node version testing
 
-Tests only if given Node version is not older than that stated in [package.json](package.json) under "extensions. Literal [range operators](#npm-semver-ranges) (formally required in package.json) are stripped off here due to implicit / exclusive ">=". Note that unfortunately npm regards "engines" settings [just as "advisory"](#npm-engines-advisory-only) and therefore will not prevent installing in not matching Node versios without further ado.
+Tests if given Node version is not older than that stated for "engines: node" in [the current library's package.json](package.json) (***not*** *the package.json of the project where the current library is imported to*). Literal [range operators](#npm-semver-ranges) (formally required in package.json) would be stripped off since ">=" is implicit here. Note that unfortunately npm regards "engines" settings [just as "advisory"](#npm-engines-advisory-only) and therefore will not prevent installing into not matching Node versions.
 
-### TypeScript complain "Could not find a declaration file for module 'node-test-bootstrap'"
+### TypeScript complain "Could not find a declaration file for module 'node-test-bootstrap'" (ts(7016))
 
-TypeScript / IntelliSense definition files should come from the involved Node libraries already installed on your system (what should be guaranteed by the involved Node version test).
-
+VS Code may mark a [Quick Fix](#vscode-quick-fixes) "Could not find a declaration file for module 'node-test-bootstrap'" (with some non working suggestsions for fixing), while at the same time Type checking and IntelliSense work well. The background here is that the functions to type come from general Node libraries and the type definitions for them are acquired automatically by VS Code - trying to provide them by the way the Quick Fix for ts(7016) knows about would superfluously and massively blow up the size of the current package and its update cycles.
 
 
 ## References
 
-###### bun-node-compatibility
-  * [Bun: Node.js Compatibility](https://bun.com/docs/runtime/nodejs-compat)
+###### bun-node-compatibility-assert
+  * [Bun: Node.js Compatibility node:assert](https://bun.com/docs/runtime/nodejs-compat#nodeassert)
+
+###### bun-node-compatibility-test
+  * [Bun: Node.js Compatibility node:test](https://bun.com/docs/runtime/nodejs-compat#nodetest)
 
 ###### node-test-describe-suite
   * [Node.js: Test runner: describe / suite](https://nodejs.org/api/test.html#describe-and-it-aliases)
@@ -83,3 +85,9 @@ TypeScript / IntelliSense definition files should come from the involved Node li
 
 ###### npm-semver-ranges
   * [npm/node-semver: The semver parser for node: Ranges](https://github.com/npm/node-semver#ranges)
+
+###### vscode-quick-fixes
+  * [Visual Studio Code: Quick Fixes](https://code.visualstudio.com/docs/typescript/typescript-refactoring#_quick-fixes)
+
+###### vscode-automatic-type-acquisition
+  * [Visual Studio Code: Typings and Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition)
