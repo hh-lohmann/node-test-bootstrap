@@ -1,11 +1,10 @@
 // @ts-check
 
 import package_data from './package.json' with { type: 'json' };
-import * as process from 'node:process' ;
-import assert from 'node:assert';
+import { release as runtimeHost, version as runtimVersion } from 'node:process' ;
 
-if( ! process.release || ! [ 'node', 'bun' ].includes( process.release.name ) ) throw Error( 'Must run in Node.js or Bun' );
-if( process.release.sourceUrl && process.release.sourceUrl.includes( '/bun/') ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
+if( ! runtimeHost || ! [ 'node', 'bun' ].includes( runtimeHost.name ) ) throw Error( 'Must run in Node.js or Bun' );
+if( runtimeHost.sourceUrl && runtimeHost.sourceUrl.includes( '/bun/') ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
 
 /** Exit with error 
  * @example _exit_err( 'engines', 'not defined' )
@@ -44,7 +43,7 @@ const _to_ver_num_arr = function( ver_string ){
   return my_arr;
 }
 
-const _is = _to_ver_num_arr( process.version ) ;
+const _is = _to_ver_num_arr( runtimVersion ) ;
 const _min = _to_ver_num_arr( package_data.engines.node ) ;
 let _approved = undefined ;
 if( ! _approved && _is[ 0 ] < _min[ 0 ] ) _exit_err( 'version' ) ;
@@ -53,5 +52,5 @@ if( ! _approved && _is[ 1 ] < _min[ 1 ] ) _exit_err( 'version' ) ;
 if( ! _approved && _is[ 1 ] > _min[ 1 ] ) _approved = true ;
 if( ! _approved && _is[ 2 ] < _min[ 2 ] ) _exit_err( 'version' ) ;
 
-export { assert }
-export { suite, test } from 'node:test';
+export { strict as assert } from 'node:assert';
+export { mock, suite, test } from 'node:test';

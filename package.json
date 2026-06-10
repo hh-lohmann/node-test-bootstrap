@@ -1,12 +1,17 @@
 {
   "name": "node-test-bootstrap",
-  "description": "Bootstrapping Node test runner files",
-  "version": "1.0.4",
-  "engines": { "node": ">=20.13.0" },
+  "description": "Bootstrapping for Node test runner files",
+  "version": "1.1.0",
+  "engines": { "node": ">=22.20.0" },
   "author": {
     "name": "hh lohmann",
     "email": "hh.lohmann@gmail.com"
   },
   "type": "module",
-  "main": "index.js"
+  "exports": {
+    "default": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test ./tests/**/*.test.*"
+  }
 }
