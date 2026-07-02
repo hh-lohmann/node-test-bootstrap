@@ -1,12 +1,20 @@
 {
   "name": "node-test-bootstrap",
   "description": "Bootstrapping for Node test runner files",
-  "version": "1.1.0",
-  "engines": { "node": ">=22.20.0" },
+  "keywords": [],
   "author": {
     "name": "hh lohmann",
     "email": "hh.lohmann@gmail.com"
   },
+  "version": "1.2.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hh-lohmann/node-test-bootstrap.git"
+  },
+  "bugs": "https://github.com/hh-lohmann/node-test-bootstrap/issues",
+  "homepage": "https://hh-lohmann.github.io/node-test-bootstrap",
+  "engines": { "node": ">=22.20.0" },
   "type": "module",
   "exports": {
     "default": "./index.js"

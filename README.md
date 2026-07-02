@@ -14,23 +14,28 @@ Bun implents Node's "assert" [fully](#bun-node-compatibility-assert) and its tes
 
 ## Installation
 
-Depending on your preferred package manager:
+Dev dependencies like this should be installed explicitly as such to make it easier for humans and tooling to separate it from production critical / less exchangeable things, so do not dismiss the "-D" switch ("-d" for Bun) just by regarding it as old-school.
+
+Pick for your preferred package manager:
 
 ```shell
-  npm i hh-lohmann/node-test-bootstrap
+  npm i -D node-test-bootstrap
 ```
 
 ```shell
-  pnpm i hh-lohmann/node-test-bootstrap
-```
-
-```shell
-  yarn add hh-lohmann/node-test-bootstrap
+  pnpm i -D node-test-bootstrap
 ```
 
 ```shell
   // see note on Bun in README
-  bun i hh-lohmann/node-test-bootstrap
+  bun i -D node-test-bootstrap
+```
+
+```shell
+  # For Yarn you should double check docs for your and / or
+  # current Yarn version, newer versions do not treat `i package_name`
+  # as an alias for `add ...` and exclude global installations
+  yarn add -D node-test-bootstrap
 ```
 
 
