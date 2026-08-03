@@ -1,10 +1,12 @@
 // @ts-check
 
 import package_data from './package.json' with { type: 'json' };
-import { release as runtimeHost, version as runtimVersion } from 'node:process' ;
+import { versions as runnerData, version as runtimVersion } from 'node:process' ;
 
-if( ! runtimeHost || ! [ 'node', 'bun' ].includes( runtimeHost.name ) ) throw Error( 'Must run in Node.js or Bun' );
-if( runtimeHost.sourceUrl && runtimeHost.sourceUrl.includes( '/bun/') ) console.warn( 'Note: Running in Bun instead of Node may be experimental' );
+if(!Object.hasOwn(runnerData,'node')) throw Error( 'Must run in Node.js or a compatible runtime (e.g. Bun or Deno)' );
+[['bun','Bun'],['deno','Deno']].forEach(value=>{
+  if(Object.hasOwn(runnerData,value[0])) console.warn(`\n\t#\n\t# Note: Running in ${value[1]} instead of Node may be experimental\n\t#\n`);
+})
 
 /** Exit with error 
  * @example _exit_err( 'engines', 'not defined' )
