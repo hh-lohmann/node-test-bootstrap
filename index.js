@@ -5,7 +5,7 @@ import { versions as runnerData, version as runtimVersion } from 'node:process' 
 
 if(!Object.hasOwn(runnerData,'node')) throw Error( 'Must run in Node.js or a compatible runtime (e.g. Bun or Deno)' );
 [['bun','Bun'],['deno','Deno']].forEach(value=>{
-  if(Object.hasOwn(runnerData,value[0])) console.warn(`\n\t#\n\t# Note: Running in ${value[1]} instead of Node may be experimental\n\t#\n`);
+  if(Object.hasOwn(runnerData,value[0])) console.warn('\x1b[31m%s\x1b[0m', `\n  #\n  #\t Note: Running in ${value[1]} instead of Node may be experimental\n  #\t => Use "bun test --isolate" to avoid "leaked handles"\n  #\t    between tests due to Bun's speed optimizations\n  #\n`);
 })
 
 /** Exit with error 

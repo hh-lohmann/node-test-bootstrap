@@ -9,7 +9,9 @@ The following acts as a tiny middleware to check the running Node version before
 
 ## Bun
 
-Bun implents Node's "assert" [fully](#bun-node-compatibility-assert) and its test runner library [partly](#bun-node-compatibility-test), so the bootstrap here will also accept to be run in Bun, details may depend on exact tests.
+> **Important:** Use "bun test --isolate" to avoid "leaked handles" between tests due to Bun's speed optimizations
+
+Bun implents Node's "assert" [fully](#bun-node-compatibility-assert) and its test runner library [partly](#bun-node-compatibility-test), so the bootstrap here will also accept to be run in Bun, details may depend on exact tests, especially regarding mocks.
 
 
 ## Installation
