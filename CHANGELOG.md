@@ -2,23 +2,18 @@
 
 ## 1.4.0 (2026-11-16)
 
-- [changelog][a1bdc86]
 - [! FIXing v1.3.0 that only worked with npm (but not pnpm)][6ade3a0]
-- [commits-to-changelog: linesToReadme][8594cff]
 
 ## 1.3.0 (2026-11-16)
 
-- [changelog][b1ea16d]
 - [add: bailing; improve README][2ad6240]
 
 ## 1.2.3 (2026-11-10)
 
-- [changelog][70376a5]
 - [Improved info on using Bun: "--isolate" to avoid "leaked handles" between tests][a75cad6]
 
 ## 1.2.2 (2026-08-03)
 
-- [changelog][8cdbdb4]
 - [Allow Deno as experimental runner][d94fec4]
 
 ## 1.2.1 (2026-07-02)
@@ -55,14 +50,9 @@
 
 
 [5631349]: https://github.com/hh-lohmann/node-test-bootstrap/commit/5631349
-[a1bdc86]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a1bdc86
 [6ade3a0]: https://github.com/hh-lohmann/node-test-bootstrap/commit/6ade3a0
-[8594cff]: https://github.com/hh-lohmann/node-test-bootstrap/commit/8594cff
-[b1ea16d]: https://github.com/hh-lohmann/node-test-bootstrap/commit/b1ea16d
 [2ad6240]: https://github.com/hh-lohmann/node-test-bootstrap/commit/2ad6240
-[70376a5]: https://github.com/hh-lohmann/node-test-bootstrap/commit/70376a5
 [a75cad6]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a75cad6
-[8cdbdb4]: https://github.com/hh-lohmann/node-test-bootstrap/commit/8cdbdb4
 [d94fec4]: https://github.com/hh-lohmann/node-test-bootstrap/commit/d94fec4
 [54db1f6]: https://github.com/hh-lohmann/node-test-bootstrap/commit/54db1f6
 [a632803]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a632803
