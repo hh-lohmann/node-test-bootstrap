@@ -1,8 +1,8 @@
 ###### npm package
 
-# Node testing bootstrap with bailing
+# Bootstrapping for Node test runner files incl. bailing
 
-Node [has a test runner on board](#nodejs-test-runner) whose capabilities depend on the Node version used, esp. "mock.property" requiring at least Node 22.20, and "mock" and other objects have to be imported identically to every test file. Unlike Jest, Mocha, Bun and Vitest it has no built-in "bail" option to stop after first failing test.
+Node [has a test runner on board](#nodejs-test-runner) whose capabilities depend on the Node version used, esp. "mock.property" requires at least Node 22.20, and "mock" and other objects have to be imported identically to every test file. Unlike Jest, Mocha, Bun and Vitest it has no built-in "bail" option to stop after first failing test.
 
 The following acts as a tiny middleware to validate the running Node version to provide "assert", "mock", "suite" and "test" functions and a "bail" possibility by an additional package.
 
@@ -50,26 +50,26 @@ node --test
 Run tests with bailing
 ```sh
 // display only first failing test (nothing displayed if no test fails)
-node --test --test-reporter=@reporters/bail --test-reporter-destination=stdout
+node --test --test-reporter=node-test-bootstrap/bail --test-reporter-destination=stdout
 
 // display all tests until first failing test
-node --test --test-reporter=@reporters/bail --test-reporter-destination=stdout \
+node --test --test-reporter=node-test-bootstrap/bail --test-reporter-destination=stdout \
      --test-reporter=spec --test-reporter-destination=stdout
 ```
-  * Note: `--test-reporter=spec --test-reporter-destination=stdout` is used by Node as default as long no (other) reporter is explicitly defined what is the case with"@reporters\bail", so then the default has to be "reinvoked" by making it explicit where each `test-reporter` has to be accompanied by a `test-reporter-destination`, i.e. where to write its output, see details under [Multiple reporters](#nodejs-test-runner-multiple-reporters); the `\` at line end effectively escapes the line break so that all lines separated with `\` will be executed as one single line
+  * Note: `--test-reporter=spec --test-reporter-destination=stdout` is used by Node as default as long no (other) reporter is explicitly defined what is the case with"node-test-bootstrap\bail", so then the default has to be "reinvoked" by making it explicit where each `test-reporter` has to be accompanied by a `test-reporter-destination`, i.e. where to write its output, see details under [Multiple reporters](#nodejs-test-runner-multiple-reporters); the `\` at line end effectively escapes the line break so that all lines separated with `\` will be executed as one single line
 
 
 ## Bun
 
 > **Important:** Use "bun test --isolate" to avoid "leaked handles" between tests due to Bun's speed optimizations
 
-Bun implents Node's "assert" [fully](#bun-nodejs-compatibility-nodeassert) and its test runner library [partly](#bun-nodejs-compatibility-nodetest), so the bootstrap here will also accept to be run in Bun, details may depend on exact tests, especially regarding mocks.
+Bun implements Node's "assert" [fully](#bun-nodejs-compatibility-nodeassert) and its test runner library [partly](#bun-nodejs-compatibility-nodetest), so the bootstrap here will also accept to be run in Bun, details may depend on exact tests, especially regarding mocks.
 
 
 ## Requirements / Dependencies
 
 * npm packages (to be installed together with current package, reuse already downloaded packages with [pnpm](#pnpm))
-  * [@reporters/bail](#molow-reportersbail): Stop whole Node test runner run when a single test fails
+  * [@reporters/bail](#reportersbail): Stop whole Node test runner run when a single test fails
 
 
 
@@ -106,6 +106,10 @@ Pick for your preferred package manager:
 
 Tests if given Node version is not older than that stated for "engines: node" in [the current library's package.json](package.json) (***not*** *the package.json of the project where the current library is imported to*). Literal [range operators](#npmnode-semver-the-semver-parser-for-node-ranges) (formally required in package.json) would be stripped off since ">=" is implicit here. Note that unfortunately npm regards "engines" settings [just as "advisory"](#npm-packagejson-engines--advisory-only) and therefore will not prevent installing into not matching Node versions.
 
+### Bailing
+
+Bailing for Node is implemented by the [@reporters/bail](#reportersbail) package that is shipped here as a dependency, but as such cannot be used directly with Node's syntax for `--test-reporter`, except as a side effect of [npm's - principally incorrect - flat node_modules structure](#log-rocket-the-problem-with-the-traditional-node_modules-approach), while pnpm's correct isolation of dependencies in the scope of the packages that define them would result in an [ERR_PACKAGE_PATH_NOT_EXPORTED: Package subpath is not defined by "exports"](#nodejs-err_package_path_not_exported) error. The technically required explicit export is achieved here by [barreling](#rollup-barrel-module), i.e node-test-bootstrap imports @reporters/bail just to immediately export it unchanged so that the command line reads `--test-reporter=node-test-bootstrap/bail` but the credit goes of course to @reporters/bail (note: do not blame barrelling for being used by idiots who use everything like idiots).
+
 ### TypeScript complain "Could not find a declaration file for module 'node-test-bootstrap'" (ts(7016))
 
 VS Code may mark a [Quick Fix](#visual-studio-code-quick-fixes) "Could not find a declaration file for module 'node-test-bootstrap'" (with some non working suggestsions for fixing), while at the same time Type checking and IntelliSense work well. The background here is that the functions to type come from general Node libraries and the type definitions for them are acquired automatically by VS Code - trying to provide them by the way the Quick Fix for ts(7016) knows about would superfluously and massively blow up the size of the current package and its update cycles.
@@ -129,9 +133,11 @@ VS Code may mark a [Quick Fix](#visual-studio-code-quick-fixes) "Could not find 
 ### Bun: Node.js Compatibility node:test
 * <https://bun.com/docs/runtime/nodejs-compat#nodetest>
 
-### MoLow @reporters/bail
-* Stop whole Node test runner run when a single test fails
-* <https://github.com/MoLow/reporters/tree/main/packages/bail
+### Log Rocket: The problem with the traditional node_modules approach
+* <https://blog.logrocket.com/advanced-package-manager-features-npm-yarn-pnpm/#problem-with-traditional-node-modules-approach>
+
+### Node.js: ERR_PACKAGE_PATH_NOT_EXPORTED
+* <https://nodejs.org/api/errors.html#err_package_path_not_exported>
 
 ### Node.js: Test runner
 * <https://nodejs.org/api/test.html#test-runner>
@@ -151,6 +157,13 @@ VS Code may mark a [Quick Fix](#visual-studio-code-quick-fixes) "Could not find 
 ### pnpm
 * Reuse already downloaded Node packages
 * <https://www.npmjs.com/package/pnpm>
+
+### @reporters/bail
+* npm package: Stop whole Node test runner run when a single test fails
+* <https://github.com/MoLow/reporters/tree/main/packages/bail>
+
+### Rollup: Barrel Module
+* <https://rolldown.rs/glossary/barrel-module>
 
 ### Visual Studio Code: Quick Fixes
 * <https://code.visualstudio.com/docs/typescript/typescript-refactoring#_quick-fixes>
