@@ -1,7 +1,13 @@
 # Changelog
 
+## 1.4.0 (2026-11-16)
+
+- [! FIXing v1.3.0 that only worked with npm (but not pnpm)][6ade3a0]
+- [commits-to-changelog: linesToReadme][8594cff]
+
 ## 1.3.0 (2026-11-16)
 
+- [changelog][b1ea16d]
 - [add: bailing; improve README][2ad6240]
 
 ## 1.2.3 (2026-11-10)
@@ -48,6 +54,9 @@
 
 
 [5631349]: https://github.com/hh-lohmann/node-test-bootstrap/commit/5631349
+[6ade3a0]: https://github.com/hh-lohmann/node-test-bootstrap/commit/6ade3a0
+[8594cff]: https://github.com/hh-lohmann/node-test-bootstrap/commit/8594cff
+[b1ea16d]: https://github.com/hh-lohmann/node-test-bootstrap/commit/b1ea16d
 [2ad6240]: https://github.com/hh-lohmann/node-test-bootstrap/commit/2ad6240
 [70376a5]: https://github.com/hh-lohmann/node-test-bootstrap/commit/70376a5
 [a75cad6]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a75cad6
