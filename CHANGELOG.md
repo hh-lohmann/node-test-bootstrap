@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.4.0 (2026-11-16)
+## 1.4.1 (2026-11-16)
 
 - [! FIXing v1.3.0 that only worked with npm (but not pnpm)][6ade3a0]
 
