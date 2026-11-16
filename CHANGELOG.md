@@ -1,7 +1,12 @@
 # Changelog
 
+## 1.3.0 (2026-11-16)
+
+- [add: bailing; improve README][60b7a6b]
+
 ## 1.2.3 (2026-11-10)
 
+- [changelog][70376a5]
 - [Improved info on using Bun: "--isolate" to avoid "leaked handles" between tests][a75cad6]
 
 ## 1.2.2 (2026-08-03)
@@ -43,6 +48,8 @@
 
 
 [5631349]: https://github.com/hh-lohmann/node-test-bootstrap/commit/5631349
+[60b7a6b]: https://github.com/hh-lohmann/node-test-bootstrap/commit/60b7a6b
+[70376a5]: https://github.com/hh-lohmann/node-test-bootstrap/commit/70376a5
 [a75cad6]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a75cad6
 [8cdbdb4]: https://github.com/hh-lohmann/node-test-bootstrap/commit/8cdbdb4
 [d94fec4]: https://github.com/hh-lohmann/node-test-bootstrap/commit/d94fec4
