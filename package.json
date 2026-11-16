@@ -28,6 +28,7 @@
   },
   "commits-to-changelog": {
     "filterDefaults": false,
+    "filterCommits": [  "/^bump version$/i", "/^changelog$/i", "/commits-to-changelog/", "/^dev:/i", "/^[Hh]ousekeeping/i", "/^planning/i", "/[Rr]efactoring/i", "/^tests/i"],
     "linesToReadme": 5
   }
 }
