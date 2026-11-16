@@ -2,7 +2,7 @@
 
 ## 1.3.0 (2026-11-16)
 
-- [add: bailing; improve README][60b7a6b]
+- [add: bailing; improve README][2ad6240]
 
 ## 1.2.3 (2026-11-10)
 
@@ -48,7 +48,7 @@
 
 
 [5631349]: https://github.com/hh-lohmann/node-test-bootstrap/commit/5631349
-[60b7a6b]: https://github.com/hh-lohmann/node-test-bootstrap/commit/60b7a6b
+[2ad6240]: https://github.com/hh-lohmann/node-test-bootstrap/commit/2ad6240
 [70376a5]: https://github.com/hh-lohmann/node-test-bootstrap/commit/70376a5
 [a75cad6]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a75cad6
 [8cdbdb4]: https://github.com/hh-lohmann/node-test-bootstrap/commit/8cdbdb4
