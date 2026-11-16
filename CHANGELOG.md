@@ -2,6 +2,7 @@
 
 ## 1.4.0 (2026-11-16)
 
+- [changelog][a1bdc86]
 - [! FIXing v1.3.0 that only worked with npm (but not pnpm)][6ade3a0]
 - [commits-to-changelog: linesToReadme][8594cff]
 
@@ -54,6 +55,7 @@
 
 
 [5631349]: https://github.com/hh-lohmann/node-test-bootstrap/commit/5631349
+[a1bdc86]: https://github.com/hh-lohmann/node-test-bootstrap/commit/a1bdc86
 [6ade3a0]: https://github.com/hh-lohmann/node-test-bootstrap/commit/6ade3a0
 [8594cff]: https://github.com/hh-lohmann/node-test-bootstrap/commit/8594cff
 [b1ea16d]: https://github.com/hh-lohmann/node-test-bootstrap/commit/b1ea16d
